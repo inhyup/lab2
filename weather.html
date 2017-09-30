@@ -51,8 +51,12 @@
                     $.ajax({
                         url : myurl,
                         dataType : "json",
-                        success : function(data) {
-                        console.log(data);
+                        success : function(parsed_json) {
+                            var location = parsed_json['location']['city'];
+                            everything = "<ul>";
+                            everything += "<li>Location: "+location;
+                            everything += "</ul>";
+                            $("#weather").html(everything);
                         }
                     });
                 });
