@@ -40,7 +40,6 @@
                 
                 $("#weatherButton").click(function(e)
                 {
-		    console.log(data);
                     var value = $("#cityField").val();
                     console.log(value);
                     e.preventDefault();
@@ -54,6 +53,7 @@
                         dataType : "json",
                         sccess : function(parsed_json) 
                         {   
+                            console.log(data);
                             var location = parsed_json['location']['city'];
                             var temp_string = parsed_json['current_observation']['temperature_string'];
                             var current_weather = parsed_json['current_observation']['weather'];
