@@ -64,6 +64,26 @@
                         }
                     });
                 });
+
+                $("#searchButton").click(function (e)
+                {
+                    var value = $("#searchStack").val();
+                    console.log(value);
+                    e.preventDefault();
+                    var myurl = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle="+$("#searchStack").val() + "&site=stackoverflow";
+                    console.log(myurl);
+                    $.ajax({
+                        url: myurl,
+                        dataType : "json",
+                        success :function(parsed_json) 
+                        {
+                            consol.log(parsed_json);
+                        }
+                    });
+
+
+                });
+
             });
         </script>
     </head>
@@ -79,6 +99,13 @@
         <textarea id="displayCity">No City</textarea>
         <p>Current Weather</p>
         <div id="weather">No weather</div>
-    
+        
+        <form id="stackExchangeForm">
+            StackExchange Search: <input type="text" id="searchStack" value=""><br>
+            <input id="searchButton" type="submit" value="Search">
+            <p>Search Results From Stack Exchange</p>
+            <div id="searchResults">No Results</div>
+        </form>
+
     </body>
 </html>
