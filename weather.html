@@ -78,6 +78,27 @@
                         success :function(parsed_json) 
                         {
                             console.log(parsed_json);
+                            var everything = "";
+
+                            if(parsed_json.items.length == 0) 
+                            {
+                                everything = "Nothing was found";
+                            }
+                            else 
+                            {
+                                for(var i = 0; i < 10; i++)
+                                {
+                                    var title = parsed_json.items[i].title;
+                                    var link = parsed_json.items[i].link;
+                                    var last_activity = parsed_json.items[i].last_activity_date;
+                                    everything += "<ul>";
+                                    everything += "<li>Title: " + title;
+                                    everything += "<li>Link: " + "<a href=" + link + ">Link to Page</a>";
+                                    everything += "<li>Last Activity: " + last_activity;
+                                    everything += "</ul>";
+                                }
+                            }
+                            $("#searchResults").html(everything);
                         }
                     });
 
